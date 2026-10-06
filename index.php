@@ -1,19 +1,16 @@
 <?php
-// Include Database aur Header
-include 'config/connect.php'; // Aapka DB connection file
-include 'includes/header.php'; // Header file
+    include 'config/connect.php'; 
+    include 'includes/header.php'; 
 
-// 1. Slider Banners Fetch Karna (Only active ones)
-$banner_query = "SELECT * FROM banners ORDER BY display_order ASC";
-$banner_result = $conn->query($banner_query);
+    $banner_query = "SELECT * FROM banners ORDER BY display_order ASC";
+    $banner_result = $conn->query($banner_query);
 
-// 2. Dynamic Schema Fetch Karna (Index page ke liye)
-$current_page = basename($_SERVER['PHP_SELF']);
-if(empty($current_page)) $current_page = 'index.php';
+    $current_page = basename($_SERVER['PHP_SELF']);
+    if(empty($current_page)) $current_page = 'index.php';
 
-$schema_query = "SELECT schema_markup FROM page_schemas WHERE page_url = '$current_page' LIMIT 1";
-$schema_result = $conn->query($schema_query);
-$schema_data = ($schema_result && $schema_result->num_rows > 0) ? $schema_result->fetch_assoc() : [];
+    $schema_query = "SELECT schema_markup FROM page_schemas WHERE page_url = '$current_page' LIMIT 1";
+    $schema_result = $conn->query($schema_query);
+    $schema_data = ($schema_result && $schema_result->num_rows > 0) ? $schema_result->fetch_assoc() : [];
 ?>
 
 <?php if(!empty($schema_data['schema_markup'])): ?>
@@ -95,18 +92,16 @@ $schema_data = ($schema_result && $schema_result->num_rows > 0) ? $schema_result
 </section>
 
 <?php
-// Fetch Dynamic Data for Sections
-$about_query = "SELECT * FROM about_sections ORDER BY section_order ASC LIMIT 1";
-$about_result = $conn->query($about_query);
-$about_data = ($about_result && $about_result->num_rows > 0) ? $about_result->fetch_assoc() : null;
+    $about_query = "SELECT * FROM about_sections ORDER BY section_order ASC LIMIT 1";
+    $about_result = $conn->query($about_query);
+    $about_data = ($about_result && $about_result->num_rows > 0) ? $about_result->fetch_assoc() : null;
 
-$services_query = "SELECT * FROM services LIMIT 6";
-$services_result = $conn->query($services_query);
+    $services_query = "SELECT * FROM services LIMIT 6";
+    $services_result = $conn->query($services_query);
 
-$test_query = "SELECT * FROM testimonials WHERE status = 1 LIMIT 3";
-$test_result = $conn->query($test_query);
+    $test_query = "SELECT * FROM testimonials WHERE status = 1 LIMIT 3";
+    $test_result = $conn->query($test_query);
 ?>
-
 <!-- ================= ABOUT US (Dynamic) ================= -->
 <section class="section-padding bg-white" id="about">
     <div class="about-container reveal">

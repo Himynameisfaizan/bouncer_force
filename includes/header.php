@@ -37,19 +37,17 @@ $logo_path = !empty($logo_data['logo_path']) ? $logo_data['logo_path'] : 'defaul
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/style/include.css">
     <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="assets/style/about.css">
 </head>
 <body>
 
 <header class="premium-header">
     <div class="header-container">
-        <!-- Brand / Logo -->
         <a href="index.php" class="brand-container">
-            <!-- Added onerror to hide broken image icon gracefully if path fails -->
             <img src="<?php echo htmlspecialchars($logo_path); ?>" alt="Logo" class="brand-logo" onerror="this.style.display='none'">
             <div class="brand-name">Bouncer <span>Force</span></div>
         </a>
 
-        <!-- Navigation Menu with Active Links -->
         <ul class="nav-menu" id="navMenu">
             <li class="nav-item">
                 <a href="index.php" class="<?php echo ($current_page == 'index.php') ? 'active' : ''; ?>">Home</a>
