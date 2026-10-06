@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# 1. Force HTTPS Redirect (SEO Security)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. Prevent Directory Browsing (Security)
+Options -Indexes
+
+# 3. Dynamic Sitemap Rewrite (sitemap.xml request karega sitemap.php ko)
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# 4. Hide .php extension (Optional - for cleaner premium URLs)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
