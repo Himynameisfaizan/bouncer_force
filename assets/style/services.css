@@ -1,0 +1,344 @@
+.services-page-wrapper {
+  padding: 80px 5%;
+  background-color: #f8f9fa; 
+}
+
+.sp-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1300px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.sp-sidebar {
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
+  position: sticky;
+  top: 100px;
+}
+
+/* Search Bar Design */
+.sp-search-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+.sp-search-box h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  color: #111;
+  margin-bottom: 15px;
+}
+.search-form {
+  display: flex;
+  background: #f8f9fa;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.search-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: none;
+  background: transparent;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+.search-btn {
+  background: #111;
+  color: #d4af37;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.search-btn:hover {
+  background: #d4af37;
+  color: #111;
+}
+
+/* Request Quote Sidebar Banner */
+.sp-quote-banner {
+  background: linear-gradient(135deg, #111 0%, #222 100%);
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 15px 40px rgba(17, 17, 17, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.sp-quote-banner::after {
+  content: "\f132"; /* Shield Icon */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 120px;
+  color: rgba(212, 175, 55, 0.05);
+  transform: rotate(-15deg);
+}
+.sp-quote-banner h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  color: #d4af37;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2;
+}
+.sp-quote-banner p {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+.sp-quote-phone {
+  display: inline-block;
+  background: #fff;
+  color: #111;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+.sp-quote-phone i {
+  color: #d4af37;
+  margin-right: 8px;
+}
+.sp-quote-phone:hover {
+  background: #d4af37;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* --- MAIN CONTENT (RIGHT) --- */
+.sp-main-content {
+  flex: 2;
+  min-width: 300px;
+}
+
+/* VIP Service Card */
+.vip-service-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  margin-bottom: 30px;
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.vip-service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.vsc-img-box {
+  width: 35%;
+  position: relative;
+  overflow: hidden;
+}
+.vsc-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.vip-service-card:hover .vsc-img-box img {
+  transform: scale(1.08);
+}
+
+.vsc-content-box {
+  width: 65%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.vsc-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+.vsc-title:hover {
+  color: #d4af37;
+}
+
+/* Icons under title */
+.vsc-quick-contact {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.vsc-quick-contact a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  text-decoration: none;
+  background: #f8f9fa;
+  padding: 5px 12px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+.vsc-quick-contact a.call:hover {
+  background: #111;
+  color: #fff;
+}
+.vsc-quick-contact a.whatsapp:hover {
+  background: #25d366;
+  color: #fff;
+}
+.vsc-quick-contact i {
+  font-size: 14px;
+}
+.vsc-quick-contact a.call i {
+  color: #111;
+}
+.vsc-quick-contact a.whatsapp i {
+  color: #25d366;
+}
+.vsc-quick-contact a:hover i {
+  color: #fff;
+}
+
+/* Truncated Description */
+.vsc-desc {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Footer Buttons */
+.vsc-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eaeaea;
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.btn-view-details {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+.btn-view-details i {
+  color: #d4af37;
+  transition: transform 0.3s ease;
+}
+.btn-view-details:hover {
+  color: #d4af37;
+}
+.btn-view-details:hover i {
+  transform: translateX(5px);
+}
+
+.btn-quote-link {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #fff;
+  background: #111;
+  padding: 8px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.btn-quote-link:hover {
+  background: #d4af37;
+  color: #111;
+}
+
+/* --- PAGINATION --- */
+.vip-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+.vip-pagination a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  border-radius: 50%;
+  font-weight: 600;
+  border: 1px solid #eaeaea;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.02);
+}
+.vip-pagination a:hover,
+.vip-pagination a.active {
+  background: #d4af37;
+  color: #111;
+  border-color: #d4af37;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+  .vip-service-card {
+    flex-direction: column;
+  }
+  .vsc-img-box {
+    width: 100%;
+    height: 220px;
+  }
+  .vsc-content-box {
+    width: 100%;
+  }
+  .sp-sidebar {
+    position: relative;
+    top: 0;
+    max-width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .vsc-footer {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}

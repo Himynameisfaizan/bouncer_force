@@ -38,6 +38,7 @@ $logo_path = !empty($logo_data['logo_path']) ? $logo_data['logo_path'] : 'defaul
     <link rel="stylesheet" href="assets/style/include.css">
     <link rel="stylesheet" href="assets/style/style.css">
     <link rel="stylesheet" href="assets/style/about.css">
+    <link rel="stylesheet" href="assets/style/services.css">
 </head>
 <body>
 
