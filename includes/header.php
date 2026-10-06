@@ -61,12 +61,12 @@ $logo_path = !empty($logo_data['logo_path']) ? $logo_data['logo_path'] : 'defaul
             <li class="nav-item">
                 <a href="services.php" class="<?php echo ($current_page == 'services.php') ? 'active' : ''; ?>">Services</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="classes.php" class="<?php echo ($current_page == 'classes.php') ? 'active' : ''; ?>">Classes</a>
             </li>
             <li class="nav-item">
                 <a href="trainers.php" class="<?php echo ($current_page == 'trainers.php') ? 'active' : ''; ?>">Trainers</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a href="blog.php" class="<?php echo ($current_page == 'blog.php') ? 'active' : ''; ?>">Blog</a>
             </li>

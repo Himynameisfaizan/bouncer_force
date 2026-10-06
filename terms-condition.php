@@ -1,43 +1,39 @@
-<?php include 'include/header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
-<section class="py-5" style="background-color: #f8f9fa;">
+<section class="py-5" style="background-color: #fafafa;">
     <div class="container mt-5">
-        <div class="row bg-white p-4 p-md-5 rounded shadow-sm">
+        <div class="row bg-white p-4 p-md-5 rounded shadow-sm" style="border-top: 4px solid #d4af37;">
             <div class="col-12">
-                <h1 class="mb-4" style="color: #17385A; font-weight: 700;">Terms & Conditions</h1>
+                <h1 class="mb-4" style="color: #111; font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase;">Terms & Conditions</h1>
                 <p class="text-muted mb-5"><strong>Last Updated:</strong> <?= date('F d, Y'); ?></p>
 
-                <h4 class="mt-4" style="font-size: 1.1rem; color: #17385A; font-weight: 600;">1. Introduction</h4>
-                <p>Welcome to <strong>EURASIASTONEINDIA</strong>. By accessing our website and purchasing our agricultural exports, food products, and spices, you agree to be bound by the following Terms & Conditions. Please read them carefully before making any transaction.</p>
+                <h4 class="mt-4" style="font-size: 1.1rem; color: #d4af37; font-weight: 700;">1. Introduction</h4>
+                <p>Welcome to <strong>Bouncer Force</strong>. By hiring our security services, bouncers, or VIP management personnel, you agree to comply with and be bound by the following Terms & Conditions. These terms ensure a safe, legal, and professional environment for both our clients and our staff.</p>
 
-                <h4 class="mt-4" style="font-size: 1.1rem; color: #17385A; font-weight: 600;">2. Products and Natural Variations</h4>
-                <p>We specialize in exporting premium agricultural commodities such as rice, cumin seeds, bay leaves, turmeric, and other spices. Because our products are natural and agricultural, slight variations in color, size, aroma, and taste may occur between different batches or harvest seasons. We strive to provide accurate descriptions, but these natural variations are not considered manufacturing defects.</p>
+                <h4 class="mt-4" style="font-size: 1.1rem; color: #d4af37; font-weight: 700;">2. Scope of Service</h4>
+                <p>Our security personnel are deployed strictly for the protection of life, property, crowd management, and access control. Bouncer Force personnel will <strong>not</strong> engage in any illegal activities, physical assault, debt collection, or any task that violates local laws. Our staff retains the right to refuse orders that compromise their safety or legality.</p>
 
-                <h4 class="mt-4" style="font-size: 1.1rem; color: #17385A; font-weight: 600;">3. Pricing, Taxes, and Customs (International Orders)</h4>
-                <p>All prices listed are subject to change based on market fluctuations. For domestic orders, prices are inclusive of applicable GST unless stated otherwise. <strong>For International Orders:</strong> The buyer (importer) is entirely responsible for paying any customs duties, import taxes, clearing fees, or other levies applied by the destination country's government.</p>
+                <h4 class="mt-4" style="font-size: 1.1rem; color: #d4af37; font-weight: 700;">3. Client Responsibilities</h4>
+                <p>The client must provide an accurate assessment of the threat level, expected crowd size, and nature of the event prior to booking. The client is also responsible for ensuring that all event licenses (liquor, loud music, venue permissions) are legally obtained. Bouncer Force is not liable for event shutdowns due to lack of municipal permissions.</p>
 
-                <h4 class="mt-4" style="font-size: 1.1rem; color: #17385A; font-weight: 600;">4. Export & Import Compliance</h4>
-                <p>When purchasing for international delivery, you (the buyer) are responsible for ensuring that the agricultural products comply with the import laws of your country. <strong>EURASIASTONEINDIA</strong> will provide standard export documentation (such as commercial invoices and basic phytosanitary certificates as agreed upon), but we are not liable if the destination country's customs hold, seize, or reject the shipment due to local import restrictions.</p>
+                <h4 class="mt-4" style="font-size: 1.1rem; color: #d4af37; font-weight: 700;">4. Safety of Personnel</h4>
+                <p>While our officers are trained to handle conflicts and hostile crowds, the client must ensure a reasonably safe working environment. If a situation escalates to a full-scale riot or armed threat beyond standard crowd control, our team is instructed to prioritize the extraction of the client/VIP and coordinate with local law enforcement.</p>
 
-                <h4 class="mt-4" style="font-size: 1.1rem; color: #17385A; font-weight: 600;">5. Medical Disclaimer</h4>
-                <p>Any information provided on this website regarding the health benefits of our spices (e.g., turmeric, cumin) is for general informational purposes only. Our products are intended for culinary and food-processing use and are not intended to diagnose, treat, cure, or prevent any disease.</p>
+                <h4 class="mt-4" style="font-size: 1.1rem; color: #d4af37; font-weight: 700;">5. Liability Disclaimer</h4>
+                <p>Bouncer Force implements rigorous security protocols. However, we cannot be held legally or financially liable for unforeseen losses, thefts, property damage, or injuries that occur during an event despite our best security measures, unless proven to be a direct result of gross negligence by our personnel.</p>
 
-                <h4 class="mt-4" style="font-size: 1.1rem; color: #17385A; font-weight: 600;">6. User Responsibilities</h4>
-                <p>You agree to provide current, complete, and accurate purchase, billing, and shipping information for all orders. Fraudulent transactions, fake inquiries, or chargeback abuse will be immediately reported to the respective financial and legal authorities.</p>
+                <h4 class="mt-4" style="font-size: 1.1rem; color: #d4af37; font-weight: 700;">6. Governing Law</h4>
+                <p>These terms and conditions are governed by the laws of India. Any disputes arising from these services shall be subject to the exclusive jurisdiction of the competent courts in New Delhi, India.</p>
 
-                <h4 class="mt-4" style="font-size: 1.1rem; color: #17385A; font-weight: 600;">7. Governing Law & Jurisdiction</h4>
-                <p>These terms and conditions are governed by and construed in accordance with the laws of India. Any disputes or legal proceedings arising out of your purchase or website usage shall be subject to the exclusive jurisdiction of the competent courts in <strong>Guntur, Andhra Pradesh, India</strong>.</p>
-
-                <h4 class="mt-4" style="font-size: 1.1rem; color: #17385A; font-weight: 600;">8. Contact Information</h4>
-                <p>If you have any questions about these Terms & Conditions, please contact us at:</p>
-                <div class="p-3 mt-3 rounded" style="background-color: #f1f5f9; border-left: 4px solid #17385A;">
-                    <p class="mb-1"><strong>Email:</strong> <a href="mailto:eurasiastoneindia@gmail.com" style="text-decoration: none; color: inherit;">eurasiastoneindia@gmail.com</a></p>
-                    <p class="mb-1"><strong>Phone:</strong> <a href="tel:+919912300247" style="text-decoration: none; color: inherit;">+91 99123 00247</a></p>
-                    <p class="mb-0"><strong>Address:</strong> 3rd Floor, Flat No.303, Fortune Iconia, Main Road, Palakaluru Road, Behind Guntur Club, Guntur, Andhra Pradesh - 522006, India.</p>
+                <h4 class="mt-4" style="font-size: 1.1rem; color: #d4af37; font-weight: 700;">7. Contact Us</h4>
+                <div class="p-3 mt-3 rounded" style="background-color: #111; color: #fff; border-left: 4px solid #d4af37;">
+                    <p class="mb-1"><strong>Email:</strong> info@bouncerforce.com</p>
+                    <p class="mb-1"><strong>Phone:</strong> +91 98XXX XXXXX</p>
+                    <p class="mb-0"><strong>Address:</strong> Bouncer Force Headquarters, New Delhi, India.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<?php include 'include/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
