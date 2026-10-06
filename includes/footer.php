@@ -2,6 +2,7 @@
 
 include 'config/connect.php';
 
+// Fetch Footer Logo[cite: 11]
 $footer_logo_query = "SELECT logo_path FROM logos WHERE location = 'header' AND is_active = 1 ORDER BY uploaded_at DESC LIMIT 1";
 $footer_logo_result = $conn->query($footer_logo_query);
 $footer_logo = ($footer_logo_result && $footer_logo_result->num_rows > 0) ? $footer_logo_result->fetch_assoc()['logo_path'] : '';
@@ -79,7 +80,18 @@ $footer_services_result = $conn->query($footer_services_query);
             </ul>
         </div>
 
-        <!-- Column 4: Contact Information -->
+        <!-- Column 4: Legal & Policies (NEW) -->
+        <div>
+            <h4 class="footer-heading">Legal</h4>
+            <ul class="footer-links">
+                <li><a href="privacy-policy.php">Privacy Policy</a></li>
+                <li><a href="terms-conditions.php">Terms & Conditions</a></li>
+                <li><a href="refund-policy.php">Refund Policy</a></li>
+                <li><a href="deployment-policy.php">Deployment Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 5: Contact Information -->
         <div>
             <h4 class="footer-heading">Get In Touch</h4>
             <ul class="footer-contact-info">
