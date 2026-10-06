@@ -1,7 +1,4 @@
 <?php
-include 'config/connect.php';
-include 'includes/header.php';
-
 $contact_query = "SELECT * FROM contacts LIMIT 1";
 $contact_result = $conn->query($contact_query);
 $contact_data = ($contact_result && $contact_result->num_rows > 0) ? $contact_result->fetch_assoc() : null;
@@ -9,56 +6,9 @@ $contact_data = ($contact_result && $contact_result->num_rows > 0) ? $contact_re
 $phone_clean = !empty($contact_data['phone']) ? preg_replace('/[^0-9]/', '', $contact_data['phone']) : '';
 
 $pre_filled_service = isset($_GET['service']) ? htmlspecialchars($_GET['service']) : '';
-
-$pageTitle = "Contact Us";
-$pageBreadcrumb = "Get In Touch";
-include 'includes/breadcrumb.php';
 ?>
 
-<section class="contact-page-wrapper">
-    
-    <!-- ================= 4 INFO CARDS ================= -->
-    <div class="info-grid">
-        <!-- Address Card -->
-        <div class="info-card reveal">
-            <div class="info-icon"><i class="fas fa-map-marked-alt"></i></div>
-            <h4>Headquarters</h4>
-            <p><?php echo !empty($contact_data['address']) ? htmlspecialchars($contact_data['address']) : 'Bouncer Force Security<br>New Delhi, India'; ?></p>
-        </div>
-
-        <!-- Phone Card -->
-        <div class="info-card reveal" style="transition-delay: 0.1s;">
-            <div class="info-icon"><i class="fas fa-phone-volume"></i></div>
-            <h4>24/7 Dispatch</h4>
-            <?php if(!empty($contact_data['phone'])): ?>
-                <a href="tel:<?php echo htmlspecialchars($phone_clean); ?>"><?php echo htmlspecialchars($contact_data['phone']); ?></a><br>
-                <span style="font-size: 13px; color: #888;">Available for Emergencies</span>
-            <?php else: ?>
-                <a href="tel:+919800000000">+91 98XXX XXXXX</a>
-            <?php endif; ?>
-        </div>
-
-        <!-- Email Card -->
-        <div class="info-card reveal" style="transition-delay: 0.2s;">
-            <div class="info-icon"><i class="fas fa-envelope-open-text"></i></div>
-            <h4>Email Us</h4>
-            <?php 
-                // Database se email fetch (ya to 'contact_email' ya 'email')[cite: 2]
-                $em = !empty($contact_data['contact_email']) ? $contact_data['contact_email'] : (!empty($contact_data['email']) ? $contact_data['email'] : 'info@bouncerforce.com');
-            ?>
-            <a href="mailto:<?php echo htmlspecialchars($em); ?>"><?php echo htmlspecialchars($em); ?></a><br>
-            <span style="font-size: 13px; color: #888;">We reply within 15 mins</span>
-        </div>
-
-        <!-- Working Hours Card -->
-        <div class="info-card reveal" style="transition-delay: 0.3s;">
-            <div class="info-icon"><i class="fas fa-user-clock"></i></div>
-            <h4>Working Hours</h4>
-            <p><?php echo !empty($contact_data['working_hours']) ? htmlspecialchars($contact_data['working_hours']) : 'Monday - Sunday<br>24 Hours Active Deployment'; ?></p>
-        </div>
-    </div>
-
-     <!-- ================= MAP & INQUIRY FORM ================= -->
+ <!-- ================= MAP & INQUIRY FORM ================= -->
     <div class="contact-container reveal">
         
         <!-- LEFT: MAP -->
@@ -128,23 +78,3 @@ include 'includes/breadcrumb.php';
 
         </div>
     </div>
-</section>
-
-<!-- Scroll Reveal Script -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const reveals = document.querySelectorAll(".reveal");
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-        reveals.forEach(reveal => { revealObserver.observe(reveal); });
-    });
-</script>
-
-<?php include 'includes/footer.php'; ?>
