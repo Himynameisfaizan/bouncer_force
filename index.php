@@ -547,7 +547,7 @@
             while($img = $gallery_result->fetch_assoc()):
         ?>
             <div class="gallery-item reveal">
-                <img src="<?php echo htmlspecialchars($img['image_path']); ?>" alt="<?php echo htmlspecialchars($img['image_name']); ?>" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=600&auto=format&fit=crop';">
+                <img src="admin/<?php echo htmlspecialchars($img['image_path']); ?>" alt="<?php echo htmlspecialchars($img['image_name']); ?>" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=600&auto=format&fit=crop';">
                 <div class="gallery-overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
