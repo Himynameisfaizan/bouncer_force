@@ -68,10 +68,39 @@ include 'includes/breadcrumb.php';
                                 <?php echo htmlspecialchars($blog['title']); ?>
                             </a>
                             
-                            <!-- Truncated Description (3 Lines) -->
-                            <div class="pbc-desc">
-                                <?php echo htmlspecialchars(strip_tags($blog['description'])); ?>
-                            </div>
+                           <style>
+    /* CSS Truncation (Fallback) */
+    .blog-desc {
+        color: #555;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        flex-grow: 1; /* Taki button hamesha bottom me align rahe */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
+<!-- Blog description part inside your while loop -->
+<div class="blog-desc">
+    <?php 
+        // 1. Sabse pehle &nbsp; aur dusre HTML entities ko normal space me convert karenge
+        $decoded_text = html_entity_decode($blog['description'], ENT_QUOTES, 'UTF-8');
+        
+        // 2. Phir saare HTML tags (jaise <p>, <strong>) hata denge
+        $clean_text = strip_tags($decoded_text);
+        
+        // 3. Phir PHP se strictly 120 characters par cut karke "..." laga denge (Exact 2-3 lines)
+        if (mb_strlen($clean_text) > 120) {
+            echo mb_substr($clean_text, 0, 120) . '...';
+        } else {
+            echo $clean_text;
+        }
+    ?>
+</div>
                             
                             <div class="pbc-footer">
                                 <a href="<?php echo $details_url; ?>" class="btn-read-more">

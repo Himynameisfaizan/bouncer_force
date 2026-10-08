@@ -21,7 +21,7 @@ include 'includes/breadcrumb.php';
             <?php 
                 $about_img = !empty($about_data['image_url']) ? "uploads/".$about_data['image_url'] : 'https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=800&auto=format&fit=crop';
             ?>
-            <img src="<?php echo htmlspecialchars($about_img); ?>" alt="Bouncer Force Team">
+            <img src="admin/<?php echo htmlspecialchars($about_img); ?>" alt="Bouncer Force Team">
         </div>
         <div class="about-text-content">
             <span class="sub-heading">The Force Behind Safe Events</span>

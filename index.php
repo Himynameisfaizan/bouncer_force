@@ -1,35 +1,35 @@
 <?php
-    include 'config/connect.php'; 
-    include 'includes/header.php'; 
+include 'config/connect.php';
+include 'includes/header.php';
 
-    $banner_query = "SELECT * FROM banners ORDER BY display_order ASC";
-    $banner_result = $conn->query($banner_query);
+$banner_query = "SELECT * FROM banners ORDER BY display_order ASC";
+$banner_result = $conn->query($banner_query);
 
-    $current_page = basename($_SERVER['PHP_SELF']);
-    if(empty($current_page)) $current_page = 'index.php';
+$current_page = basename($_SERVER['PHP_SELF']);
+if (empty($current_page)) $current_page = 'index.php';
 
-    $schema_query = "SELECT schema_markup FROM page_schemas WHERE page_url = '$current_page' LIMIT 1";
-    $schema_result = $conn->query($schema_query);
-    $schema_data = ($schema_result && $schema_result->num_rows > 0) ? $schema_result->fetch_assoc() : [];
+$schema_query = "SELECT schema_markup FROM page_schemas WHERE page_url = '$current_page' LIMIT 1";
+$schema_result = $conn->query($schema_query);
+$schema_data = ($schema_result && $schema_result->num_rows > 0) ? $schema_result->fetch_assoc() : [];
 ?>
 
-<?php if(!empty($schema_data['schema_markup'])): ?>
+<?php if (!empty($schema_data['schema_markup'])): ?>
     <?php echo $schema_data['schema_markup']; ?>
 <?php else: ?>
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HealthAndBeautyBusiness",
-      "name": "Bouncer Force Gym",
-      "image": "logo.png",
-      "telephone": "+91-9876543210",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Gym Street",
-        "addressLocality": "Delhi",
-        "addressCountry": "IN"
-      }
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "HealthAndBeautyBusiness",
+            "name": "Bouncer Force Gym",
+            "image": "logo.png",
+            "telephone": "+91-9876543210",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Gym Street",
+                "addressLocality": "Delhi",
+                "addressCountry": "IN"
+            }
+        }
     </script>
 <?php endif; ?>
 
@@ -41,50 +41,50 @@
 <section class="hero-slider-section">
     <div class="swiper myHeroSwiper">
         <div class="swiper-wrapper">
-            
-            <?php 
-            if ($banner_result && $banner_result->num_rows > 0): 
-                while($row = $banner_result->fetch_assoc()):
-            ?>
-            
-            <div class="swiper-slide">
-             
-                <div class="slide-bg-image" style="background-image: url('admin/<?php echo htmlspecialchars($row['banner_path']); ?>');"></div>
-                
-                <div class="slide-overlay"></div>
-                
-                <div class="slide-content">
-                    <h1 class="slide-title"><?php echo htmlspecialchars($row['title']); ?></h1>
-                    <p class="slide-desc"><?php echo htmlspecialchars($row['description']); ?></p>
-                    
-                    <?php if(!empty($row['link_url'])): ?>
-                        <a href="<?php echo htmlspecialchars($row['link_url']); ?>" class="btn-slider">Explore Now</a>
-                    <?php else: ?>
-                        <a href="join.php" class="btn-slider">Start Your Journey</a>
-                    <?php endif; ?>
-                </div>
-            </div>
 
-            <?php 
-                endwhile;
-            else: 
+            <?php
+            if ($banner_result && $banner_result->num_rows > 0):
+                while ($row = $banner_result->fetch_assoc()):
             ?>
-            
-            <!-- Default Fallback Slide -->
-            <div class="swiper-slide">
-                <div class="slide-bg-image" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h1 class="slide-title">Unleash Your <br><span>True Potential</span></h1>
-                    <p class="slide-desc">Experience the premium fitness environment at Bouncer Force. State-of-the-art equipment, elite trainers, and a community that pushes you forward.</p>
-                    <a href="join.php" class="btn-slider">Join Bouncer Force</a>
+
+                    <div class="swiper-slide">
+
+                        <div class="slide-bg-image" style="background-image: url('admin/<?php echo htmlspecialchars($row['banner_path']); ?>');"></div>
+
+                        <div class="slide-overlay"></div>
+
+                        <div class="slide-content">
+                            <h1 class="slide-title"><?php echo htmlspecialchars($row['title']); ?></h1>
+                            <p class="slide-desc"><?php echo htmlspecialchars($row['description']); ?></p>
+
+                            <?php if (!empty($row['link_url'])): ?>
+                                <a href="<?php echo htmlspecialchars($row['link_url']); ?>" class="btn-slider">Explore Now</a>
+                            <?php else: ?>
+                                <a href="join.php" class="btn-slider">Start Your Journey</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                <?php
+                endwhile;
+            else:
+                ?>
+
+                <!-- Default Fallback Slide -->
+                <div class="swiper-slide">
+                    <div class="slide-bg-image" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop');"></div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1 class="slide-title">Unleash Your <br><span>True Potential</span></h1>
+                        <p class="slide-desc">Experience the premium fitness environment at Bouncer Force. State-of-the-art equipment, elite trainers, and a community that pushes you forward.</p>
+                        <a href="join.php" class="btn-slider">Join Bouncer Force</a>
+                    </div>
                 </div>
-            </div>
-            
+
             <?php endif; ?>
-            
+
         </div>
-        
+
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
@@ -92,22 +92,22 @@
 </section>
 
 <?php
-    $about_query = "SELECT * FROM about_sections ORDER BY section_order ASC LIMIT 1";
-    $about_result = $conn->query($about_query);
-    $about_data = ($about_result && $about_result->num_rows > 0) ? $about_result->fetch_assoc() : null;
+$about_query = "SELECT * FROM about_sections ORDER BY section_order ASC LIMIT 1";
+$about_result = $conn->query($about_query);
+$about_data = ($about_result && $about_result->num_rows > 0) ? $about_result->fetch_assoc() : null;
 
-    $services_query = "SELECT * FROM services LIMIT 6";
-    $services_result = $conn->query($services_query);
+$services_query = "SELECT * FROM services LIMIT 6";
+$services_result = $conn->query($services_query);
 
-    $test_query = "SELECT * FROM testimonials WHERE status = 1 LIMIT 3";
-    $test_result = $conn->query($test_query);
+$test_query = "SELECT * FROM testimonials WHERE status = 1 LIMIT 3";
+$test_result = $conn->query($test_query);
 ?>
 <!-- ================= ABOUT US (Dynamic) ================= -->
 <section class="section-padding bg-white" id="about">
     <div class="about-container reveal">
         <div class="about-image">
-            <?php 
-                $img = !empty($about_data['image_url']) ? $about_data['image_url'] : 'https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=800&auto=format&fit=crop'; 
+            <?php
+            $img = !empty($about_data['image_url']) ? $about_data['image_url'] : 'https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=800&auto=format&fit=crop';
             ?>
             <img src="admin/<?php echo htmlspecialchars($img); ?>" alt="Bouncer Force Security">
         </div>
@@ -117,14 +117,14 @@
                 <?php echo !empty($about_data['title']) ? htmlspecialchars($about_data['title']) : 'The Force Behind Safe, Seamless Events'; ?>
             </h2>
             <div class="about-text">
-                <?php 
-                    // Database me abhi shayad agri/other content ho, jab admin security ka dale tab dynamic display hoga
-                    if(!empty($about_data['content'])) {
-                        echo $about_data['content'];
-                    } else {
-                        echo "<p>Bouncer Force isn't a typical guard agency. We are a specialist team of event bouncers and VIP protocol professionals who blend a commanding presence with genuine hospitality — your guests feel looked after, never policed.</p>";
-                        echo "<p>From high-energy events to white-glove VIP guest management, we deploy trained professionals who keep your people safe and your event flawless.</p>";
-                    }
+                <?php
+                // Database me abhi shayad agri/other content ho, jab admin security ka dale tab dynamic display hoga
+                if (!empty($about_data['content'])) {
+                    echo $about_data['content'];
+                } else {
+                    echo "<p>Bouncer Force isn't a typical guard agency. We are a specialist team of event bouncers and VIP protocol professionals who blend a commanding presence with genuine hospitality — your guests feel looked after, never policed.</p>";
+                    echo "<p>From high-energy events to white-glove VIP guest management, we deploy trained professionals who keep your people safe and your event flawless.</p>";
+                }
                 ?>
             </div>
             <a href="about.php" class="btn-gold" style="margin-top: 15px; display: inline-block;">Learn More</a>
@@ -133,8 +133,8 @@
 </section>
 
 <?php
-    $services_query = "SELECT * FROM services LIMIT 6";
-    $services_result = $conn->query($services_query);
+$services_query = "SELECT * FROM services LIMIT 6";
+$services_result = $conn->query($services_query);
 ?>
 
 <style>
@@ -146,24 +146,24 @@
         max-width: 1300px;
         margin: 0 auto;
     }
-    
+
     .service-card-premium {
         background: #fff;
         border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         display: flex;
         flex-direction: column;
-        border: 1px solid rgba(0,0,0,0.03);
+        border: 1px solid rgba(0, 0, 0, 0.03);
         position: relative;
     }
-    
+
     .service-card-premium:hover {
         transform: translateY(-12px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
-    
+
     /* Image Container (Clickable) */
     .scp-img-wrap {
         width: 100%;
@@ -172,32 +172,35 @@
         display: block;
         position: relative;
     }
-    
+
     .scp-img-wrap::after {
         content: '';
         position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.4) 100%);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
         z-index: 1;
         opacity: 0;
         transition: opacity 0.4s ease;
     }
-    
+
     .service-card-premium:hover .scp-img-wrap::after {
         opacity: 1;
     }
-    
+
     .scp-img-wrap img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
-    
+
     .service-card-premium:hover .scp-img-wrap img {
         transform: scale(1.1);
     }
-    
+
     /* Card Content */
     .scp-content {
         padding: 35px 30px;
@@ -206,7 +209,7 @@
         flex-direction: column;
         background-color: #fff;
     }
-    
+
     /* Title (Clickable) */
     .scp-title {
         font-family: 'Montserrat', sans-serif;
@@ -217,11 +220,12 @@
         text-decoration: none;
         transition: color 0.3s ease;
     }
-    
+
     .scp-title:hover {
-        color: #d4af37; /* VIP Gold */
+        color: #d4af37;
+        /* VIP Gold */
     }
-    
+
     /* Description */
     .scp-desc {
         font-family: 'Poppins', sans-serif;
@@ -231,7 +235,7 @@
         margin-bottom: 25px;
         flex-grow: 1;
     }
-    
+
     /* View Details Link */
     .scp-link {
         font-family: 'Montserrat', sans-serif;
@@ -246,17 +250,17 @@
         letter-spacing: 1px;
         transition: all 0.3s ease;
     }
-    
+
     .scp-link i {
         font-size: 13px;
         transition: transform 0.3s ease;
     }
-    
+
     .scp-link:hover {
         color: #111;
         gap: 12px;
     }
-    
+
     .scp-link:hover i {
         transform: translateX(4px);
     }
@@ -270,85 +274,83 @@
     </div>
 
     <div class="services-grid-premium">
-        <?php 
-        if ($services_result && $services_result->num_rows > 0): 
-            while($service = $services_result->fetch_assoc()):
-                // URL for the details page passing the ID
-                $details_url = "service-details.php?id=" . $service['id'];
+        <?php
+        if ($services_result && $services_result->num_rows > 0):
+            while ($service = $services_result->fetch_assoc()):
+                $slug = !empty($service['slug_url']) ? $service['slug_url'] : $service['id'];
+                $details_url = "service-details.php?slug=" . htmlspecialchars($slug);
         ?>
-            <div class="service-card-premium reveal">
-                <!-- Image Section (Clickable) -->
-                <a href="<?php echo $details_url; ?>" class="scp-img-wrap">
-                    <!-- admin path set karein apne project structure ke hisab se -->
-                    <img src="admin/assets/img/uploads/<?php echo htmlspecialchars($service['img_path']); ?>" 
-                         alt="<?php echo htmlspecialchars($service['service_name']); ?>" 
-                         onerror="this.src='https://images.unsplash.com/photo-1549497552-32b00f5abcc0?q=80&w=800&auto=format&fit=crop';">
-                </a>
-                
-                <!-- Content Section -->
-                <div class="scp-content">
-                    <!-- Title (Clickable) -->
-                    <a href="<?php echo $details_url; ?>" class="scp-title">
-                        <?php echo htmlspecialchars($service['service_name']); ?>
+                <div class="service-card-premium reveal">
+                    <a href="<?php echo $details_url; ?>" class="scp-img-wrap">
+                        <img src="admin/assets/img/uploads/<?php echo htmlspecialchars($service['img_path']); ?>"
+                            alt="<?php echo htmlspecialchars($service['service_name']); ?>" style="height:auto" ;
+                            onerror="this.src='https://images.unsplash.com/photo-1549497552-32b00f5abcc0?q=80&w=800&auto=format&fit=crop';">
                     </a>
-                    
-                    <!-- Short Description -->
-                    <p class="scp-desc">
-                        <?php echo htmlspecialchars($service['short_desc']); ?>
-                    </p>
-                    
-                    <!-- View Details Link -->
-                    <div>
-                        <a href="<?php echo $details_url; ?>" class="scp-link">
-                            View Details <i class="fas fa-arrow-right"></i>
+
+                    <!-- Content Section -->
+                    <div class="scp-content">
+                        <!-- Title (Clickable) -->
+                        <a href="<?php echo $details_url; ?>" class="scp-title">
+                            <?php echo htmlspecialchars($service['service_name']); ?>
                         </a>
+
+                        <!-- Short Description -->
+                        <p class="scp-desc">
+                            <?php echo htmlspecialchars($service['short_desc']); ?>
+                        </p>
+
+                        <!-- View Details Link -->
+                        <div>
+                            <a href="<?php echo $details_url; ?>" class="scp-link">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php 
+            <?php
             endwhile;
-        else: 
+        else:
             // ================= PREMIUM FALLBACK DATA ================= 
             // Jab database mein service upload na ho tab tak VIP dummy data dikhega
-        ?>
+            ?>
             <!-- Fallback Card 1 -->
             <div class="service-card-premium reveal">
-                <a href="service-details.php?id=1" class="scp-img-wrap">
+                <a href="service-details.php?slug=vip-guest-management" class="scp-img-wrap">
                     <img src="https://images.unsplash.com/photo-1555596884-2195dfb8f2b7?q=80&w=800&auto=format&fit=crop" alt="VIP Guest Management">
                 </a>
                 <div class="scp-content">
-                    <a href="service-details.php?id=1" class="scp-title">VIP Guest Management</a>
+                    <a href="service-details.php?slug=vip-guest-management" class="scp-title">VIP Guest Management</a>
                     <p class="scp-desc">White-glove handling for your most important guests — discreet escorts, reserved zones and flawless VIP protocol.</p>
                     <div>
-                        <a href="service-details.php?id=1" class="scp-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        <a href="service-details.php?slug=vip-guest-management" class="scp-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Fallback Card 2 -->
             <div class="service-card-premium reveal">
-                <a href="service-details.php?id=2" class="scp-img-wrap">
+                <a href="service-details.php?slug=celebrity-protection" class="scp-img-wrap">
                     <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=800&auto=format&fit=crop" alt="Celebrity Protection">
                 </a>
                 <div class="scp-content">
-                    <a href="service-details.php?id=2" class="scp-title">Celebrity Protection</a>
+                    <a href="service-details.php?slug=celebrity-protection" class="scp-title">Celebrity Protection</a>
                     <p class="scp-desc">Close-protection officers for artists, athletes, executives and public figures. We handle their journey so you can handle your event.</p>
                     <div>
-                        <a href="service-details.php?id=2" class="scp-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        <a href="service-details.php?slug=celebrity-protection" class="scp-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Fallback Card 3 -->
             <div class="service-card-premium reveal">
-                <a href="service-details.php?id=3" class="scp-img-wrap">
+                <a href="service-details.php?slug=crowd-control" class="scp-img-wrap">
                     <img src="https://images.unsplash.com/photo-1549497552-32b00f5abcc0?q=80&w=800&auto=format&fit=crop" alt="Crowd Control">
                 </a>
                 <div class="scp-content">
-                    <a href="service-details.php?id=3" class="scp-title">Event Crowd Control</a>
+                    <a href="service-details.php?slug=crowd-control" class="scp-title">Event Crowd Control</a>
                     <p class="scp-desc">Queue discipline, ticket checks and entry management that keeps thousands moving calmly without compromising security.</p>
                     <div>
-                        <a href="service-details.php?id=3" class="scp-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        <a href="service-details.php?slug=crowd-control" class="scp-link">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -417,25 +419,25 @@
     </div>
 
     <div class="services-grid"> <!-- Reusing grid layout for consistent cards -->
-        <?php 
-        if ($test_result && $test_result->num_rows > 0): 
-            while($test = $test_result->fetch_assoc()):
+        <?php
+        if ($test_result && $test_result->num_rows > 0):
+            while ($test = $test_result->fetch_assoc()):
         ?>
-            <div class="testimonial-card reveal">
-                <i class="fas fa-quote-right quote-icon"></i>
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <div class="testimonial-card reveal">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="test-text">"<?php echo strip_tags($test['message']); ?>"</p>
+                    <div class="client-info">
+                        <h5><?php echo htmlspecialchars($test['name']); ?></h5>
+                        <span><?php echo htmlspecialchars($test['designation']); ?></span>
+                    </div>
                 </div>
-                <p class="test-text">"<?php echo strip_tags($test['message']); ?>"</p>
-                <div class="client-info">
-                    <h5><?php echo htmlspecialchars($test['name']); ?></h5>
-                    <span><?php echo htmlspecialchars($test['designation']); ?></span>
-                </div>
-            </div>
-        <?php 
+            <?php
             endwhile;
-        else: 
-        ?>
+        else:
+            ?>
             <!-- Fallbacks -->
             <div class="testimonial-card reveal">
                 <i class="fas fa-quote-right quote-icon"></i>
@@ -469,16 +471,34 @@
 </section>
 
 <?php
-    $blog_query = "SELECT * FROM blogs WHERE status = 1 ORDER BY blog_id DESC LIMIT 3";
-    $blog_result = $conn->query($blog_query);
+$blog_query = "SELECT * FROM blogs WHERE status = 1 ORDER BY blog_id DESC LIMIT 3";
+$blog_result = $conn->query($blog_query);
 
-    $gallery_query = "SELECT * FROM gallery ORDER BY ID DESC LIMIT 6";
-    $gallery_result = $conn->query($gallery_query);
+$gallery_query = "SELECT * FROM gallery ORDER BY ID DESC LIMIT 6";
+$gallery_result = $conn->query($gallery_query);
 
-    $contact_query = "SELECT * FROM contacts LIMIT 1";
-    $contact_result = $conn->query($contact_query);
-    $contact_data = ($contact_result && $contact_result->num_rows > 0) ? $contact_result->fetch_assoc() : null;
+$contact_query = "SELECT * FROM contacts LIMIT 1";
+$contact_result = $conn->query($contact_query);
+$contact_data = ($contact_result && $contact_result->num_rows > 0) ? $contact_result->fetch_assoc() : null;
 ?>
+
+<!-- ================= BLOG / NEWS SECTION (Dynamic) ================= -->
+<!-- Lightbox CSS for Premium Gallery Popup (Header me add karein ya yahi rehne dein) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+
+<style>
+    /* Blog Description - 3 Line Truncate */
+    .blog-desc {
+        color: #555;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        display: -webkit-box;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
 
 <!-- ================= BLOG / NEWS SECTION (Dynamic) ================= -->
 <section class="section-padding bg-white" id="blog">
@@ -488,29 +508,68 @@
     </div>
 
     <div class="blog-grid">
-        <?php 
-        if ($blog_result && $blog_result->num_rows > 0): 
-            while($blog = $blog_result->fetch_assoc()):
+        <?php
+        if ($blog_result && $blog_result->num_rows > 0):
+            while ($blog = $blog_result->fetch_assoc()):
         ?>
-            <div class="blog-card reveal">
-                <!-- Check image path. Pre-pend your upload directory if needed -->
-                <img src="admin/assets/img/uploads/blogs/<?php echo htmlspecialchars($blog['image']); ?>" alt="Blog Image" class="blog-img" onerror="this.src='https://images.unsplash.com/photo-1555596884-2195dfb8f2b7?q=80&w=600&auto=format&fit=crop';">
-                <div class="blog-content">
-                    <span class="blog-date"><?php echo date('M d, Y', strtotime($blog['created_at'])); ?></span>
-                    <h3 class="blog-title"><?php echo htmlspecialchars($blog['title']); ?></h3>
-                    <a href="blog-detail.php?slug=<?php echo $blog['slug']; ?>" class="blog-link">Read Article</a>
+                <div class="blog-card reveal">
+                    <!-- Check image path. Pre-pend your upload directory if needed -->
+                    <a href="blog-details.php?slug=<?php echo htmlspecialchars($blog['slug']); ?>">
+                        <img src="admin/assets/img/uploads/blogs/<?php echo htmlspecialchars($blog['image']); ?>" alt="Blog Image" class="blog-img" onerror="this.src='https://images.unsplash.com/photo-1555596884-2195dfb8f2b7?q=80&w=600&auto=format&fit=crop';">
+                    </a>
+                    <div class="blog-content">
+                        <span class="blog-date"><?php echo date('M d, Y', strtotime($blog['created_at'])); ?></span>
+                        <a href="blog-details.php?slug=<?php echo htmlspecialchars($blog['slug']); ?>" style="text-decoration: none; color: inherit;">
+                            <h3 class="blog-title"><?php echo htmlspecialchars($blog['title']); ?></h3>
+                        </a>
+                        <!-- NEW: 3-Line Description -->
+                        <style>
+                            /* CSS Truncation (Fallback) */
+                            .blog-desc {
+                                color: #555;
+                                font-size: 15px;
+                                line-height: 1.6;
+                                margin-bottom: 15px;
+                                flex-grow: 1;
+                                /* Taki button hamesha bottom me align rahe */
+                                display: -webkit-box;
+                                line-clamp: 3;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                        </style>
+
+                        <!-- Blog description part inside your while loop -->
+                        <div class="blog-desc">
+                            <?php
+                            $decoded_text = html_entity_decode($blog['description'], ENT_QUOTES, 'UTF-8');
+
+                            $clean_text = strip_tags($decoded_text);
+
+                            if (mb_strlen($clean_text) > 120) {
+                                echo mb_substr($clean_text, 0, 120) . '...';
+                            } else {
+                                echo $clean_text;
+                            }
+                            ?>
+                        </div>
+
+                        <!-- Slug URL maintained -->
+                        <a href="blog-details.php?slug=<?php echo htmlspecialchars($blog['slug']); ?>" class="blog-link">Read Article</a>
+                    </div>
                 </div>
-            </div>
-        <?php 
+            <?php
             endwhile;
-        else: 
+        else:
             // Fallback content for VIP Security
-        ?>
+            ?>
             <div class="blog-card reveal">
                 <img src="https://images.unsplash.com/photo-1555596884-2195dfb8f2b7?q=80&w=600&auto=format&fit=crop" alt="Security Event" class="blog-img">
                 <div class="blog-content">
                     <span class="blog-date">Oct 12, 2026</span>
                     <h3 class="blog-title">How to Secure High-Profile Corporate Events</h3>
+                    <div class="blog-desc">Discover the top strategies for maintaining absolute discretion and safety during high-net-worth corporate gatherings and VIP galas.</div>
                     <a href="#" class="blog-link">Read Article</a>
                 </div>
             </div>
@@ -519,6 +578,7 @@
                 <div class="blog-content">
                     <span class="blog-date">Sep 28, 2026</span>
                     <h3 class="blog-title">The Importance of Discreet Close Protection</h3>
+                    <div class="blog-desc">Learn why modern close protection is less about intimidation and more about seamless, invisible risk management for public figures.</div>
                     <a href="#" class="blog-link">Read Article</a>
                 </div>
             </div>
@@ -527,6 +587,7 @@
                 <div class="blog-content">
                     <span class="blog-date">Sep 15, 2026</span>
                     <h3 class="blog-title">Advanced Crowd Control Tactics for Festivals</h3>
+                    <div class="blog-desc">Queue discipline, entry funneling, and de-escalation techniques that keep massive concert crowds safe and moving smoothly.</div>
                     <a href="#" class="blog-link">Read Article</a>
                 </div>
             </div>
@@ -542,32 +603,50 @@
     </div>
 
     <div class="gallery-grid">
-        <?php 
-        if ($gallery_result && $gallery_result->num_rows > 0): 
-            while($img = $gallery_result->fetch_assoc()):
+        <?php
+        if ($gallery_result && $gallery_result->num_rows > 0):
+            while ($img = $gallery_result->fetch_assoc()):
+                $img_path = "admin/" . htmlspecialchars($img['image_path']);
         ?>
-            <div class="gallery-item reveal">
-                <img src="admin/<?php echo htmlspecialchars($img['image_path']); ?>" alt="<?php echo htmlspecialchars($img['image_name']); ?>" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=600&auto=format&fit=crop';">
-                <div class="gallery-overlay">
-                    <i class="fas fa-search-plus"></i>
+                <div class="gallery-item reveal">
+                    <!-- NEW: Wrap image in an anchor tag with data-lightbox attribute -->
+                    <a href="<?php echo $img_path; ?>" data-lightbox="home-gallery" data-title="<?php echo htmlspecialchars($img['image_name']); ?>" style="display:block; width:100%; height:100%;">
+                        <img src="<?php echo $img_path; ?>" alt="<?php echo htmlspecialchars($img['image_name']); ?>" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=600&auto=format&fit=crop';">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
                 </div>
-            </div>
-        <?php 
+            <?php
             endwhile;
-        else: 
+        else:
             // Fallback images
-            for($i=1; $i<=3; $i++):
-        ?>
-            <div class="gallery-item reveal">
-                <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=600&auto=format&fit=crop" alt="Event Security" class="gallery-img">
-                <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-            </div>
-        <?php 
+            for ($i = 1; $i <= 3; $i++):
+            ?>
+                <div class="gallery-item reveal">
+                    <a href="https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=1200&auto=format&fit=crop" data-lightbox="home-gallery" data-title="Event Security" style="display:block; width:100%; height:100%;">
+                        <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=600&auto=format&fit=crop" alt="Event Security" class="gallery-img">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </a>
+                </div>
+        <?php
             endfor;
-        endif; 
+        endif;
         ?>
     </div>
 </section>
+
+<!-- Lightbox JS for Gallery (Page ke bottom me scripts ke paas add karein) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+<script>
+    // Lightbox Settings
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'showImageNumberLabel': false,
+        'fadeDuration': 300
+    });
+</script>
 
 <!-- ================= CONTACT / INQUIRY SECTION (Dynamic Map) ================= -->
 <section class="section-padding bg-white" id="contact">
@@ -579,9 +658,9 @@
     <div class="contact-container reveal">
         <!-- LEFT: Map Container -->
         <div class="contact-map">
-            <?php 
-                // Database se map fetch karna[cite: 2]
-                $map_url = (!empty($contact_data['map'])) ? $contact_data['map'] : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111989.29383599345!2d77.39502834999999!3d28.69965315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf1bb41c50fdf%3A0xe6f06fd26a7798ba!2sGhaziabad%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1788933014704!5m2!1sen!2sin';
+            <?php
+            // Database se map fetch karna[cite: 2]
+            $map_url = (!empty($contact_data['map'])) ? $contact_data['map'] : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111989.29383599345!2d77.39502834999999!3d28.69965315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf1bb41c50fdf%3A0xe6f06fd26a7798ba!2sGhaziabad%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1788933014704!5m2!1sen!2sin';
             ?>
             <iframe src="<?php echo $map_url; ?>" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
@@ -590,7 +669,7 @@
         <div class="contact-form-wrap">
             <h3>Let's Lock In Your Security</h3>
             <p>Tell us about your event and our coordinator will reply within minutes.</p>
-            
+
             <!-- Adjust action attribute to your backend form handler -->
             <form action="submit_inquiry.php" method="POST">
                 <div class="form-group">
@@ -622,7 +701,7 @@
     </div>
 </section>
 
-<?php include 'includes/footer.php'?>
+<?php include 'includes/footer.php' ?>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -650,14 +729,14 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        if(typeof Swiper !== 'undefined') {
+        if (typeof Swiper !== 'undefined') {
             var swiper = new Swiper(".myHeroSwiper", {
                 spaceBetween: 0,
-                effect: "fade", 
-                speed: 1000,    
+                effect: "fade",
+                speed: 1000,
                 loop: true,
                 autoplay: {
-                    delay: 5000, 
+                    delay: 5000,
                     disableOnInteraction: false,
                 },
                 navigation: {

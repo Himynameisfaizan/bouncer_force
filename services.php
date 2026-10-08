@@ -90,8 +90,7 @@ include 'includes/breadcrumb.php';
                         <!-- 3-Line Truncated Description -->
                         <div class="vsc-desc">
                             <?php 
-                                // Long desc ko clean karke dikhana, agar short na ho[cite: 2]
-                                $desc = !empty($service['long_desc']) ? strip_tags($service['long_desc']) : $service['short_desc'];
+                                $desc = !empty($service['short_desc']) ? strip_tags($service['short_desc']) : $service['long_desc'];
                                 echo htmlspecialchars($desc);
                             ?>
                         </div>
